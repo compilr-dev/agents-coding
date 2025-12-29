@@ -1,5 +1,15 @@
 # @compilr-dev/agents-coding
 
+```
+      \|/
+    ╭══════════╮     ___  ___  _ __ ___  _ __ (_) |_ __
+    ║'  ▐▌  ▐▌ │    / __|/ _ \| '_ ` _ \| '_ \| | | '__|
+    ║          │   | (__| (_) | | | | | | |_) | | | |
+    ╰─═──────═─╯    \___|\___/|_| |_| |_| .__/|_|_|_|
+      \________\                        | | .dev
+                                        |_| coding
+```
+
 > Coding-specific tools for AI assistants
 
 [![npm version](https://img.shields.io/npm/v/@compilr-dev/agents-coding.svg)](https://www.npmjs.com/package/@compilr-dev/agents-coding)
