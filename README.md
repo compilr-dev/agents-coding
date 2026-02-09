@@ -10,12 +10,37 @@
                                         |_| coding
 ```
 
-> Coding-specific tools for AI assistants
+> Coding-specific tools and language analysis for AI assistants
 
 [![npm version](https://img.shields.io/npm/v/@compilr-dev/agents-coding.svg)](https://www.npmjs.com/package/@compilr-dev/agents-coding)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Extension package for [@compilr-dev/agents](https://www.npmjs.com/package/@compilr-dev/agents) that provides coding-specific tools for git operations, project detection, smart runners, and code search.
+Extension package for [@compilr-dev/agents](https://www.npmjs.com/package/@compilr-dev/agents) that provides coding-specific tools for git operations, project detection, smart runners, code search, and language-specific AST analysis.
+
+## Overview
+
+This is the **umbrella package** that bundles the entire coding tools ecosystem:
+
+| Package | Description |
+|---------|-------------|
+| **@compilr-dev/agents-coding** | This package -- batteries-included with auto-detection |
+| [@compilr-dev/agents-coding-core](https://www.npmjs.com/package/@compilr-dev/agents-coding-core) | Git tools, project detection, smart runners, code search |
+| [@compilr-dev/agents-coding-ts](https://www.npmjs.com/package/@compilr-dev/agents-coding-ts) | TypeScript/JavaScript AST analysis |
+| [@compilr-dev/agents-coding-python](https://www.npmjs.com/package/@compilr-dev/agents-coding-python) | Python AST analysis (Tree-sitter) |
+| [@compilr-dev/agents-coding-go](https://www.npmjs.com/package/@compilr-dev/agents-coding-go) | Go AST analysis (Tree-sitter) |
+
+Install just this package for everything, or install individual packages for a lighter footprint.
+
+## Installation
+
+```bash
+# Umbrella package (recommended - includes everything)
+npm install @compilr-dev/agents-coding @compilr-dev/agents
+
+# Or individual packages for lighter installs
+npm install @compilr-dev/agents-coding-core @compilr-dev/agents
+npm install @compilr-dev/agents-coding-ts    # TypeScript analysis
+```
 
 ## Features
 
@@ -23,11 +48,19 @@ Extension package for [@compilr-dev/agents](https://www.npmjs.com/package/@compi
 - **Project Detection** - Detect project type, find root, analyze structure
 - **Smart Runners** - Run tests, lint, build, format with auto-detection
 - **Code Search** - Find definitions, references, and TODOs
+- **Language Analysis** - AST-based analysis for TypeScript, Python, Go
+- **14 Skills** - Reusable prompts for coding workflows
+- **Auto-detection** - Automatically selects the right language analyzer
 
-## Installation
+## Language Auto-Detection
 
-```bash
-npm install @compilr-dev/agents-coding @compilr-dev/agents
+The umbrella package includes a dispatcher that automatically selects the right analyzer:
+
+```typescript
+import { createLanguageTools } from '@compilr-dev/agents-coding';
+
+// Auto-detects project language and returns appropriate tools
+const tools = await createLanguageTools('/path/to/project');
 ```
 
 ## Git Tools
@@ -142,17 +175,16 @@ const agent = new Agent({
 - **Node.js** 18 or higher
 - **@compilr-dev/agents** peer dependency
 
-## Links
-
-- [Website](https://compilr.dev)
-- [Documentation](https://compilr.dev/docs)
-- [npm Package](https://www.npmjs.com/package/@compilr-dev/agents-coding)
-- [GitHub Issues](https://github.com/compilr-dev/agents-coding/issues)
-
 ## Related Packages
 
 - [@compilr-dev/agents](https://www.npmjs.com/package/@compilr-dev/agents) - Core agent library
 - [@compilr-dev/cli](https://www.npmjs.com/package/@compilr-dev/cli) - AI-powered CLI assistant
+
+## Links
+
+- [Website](https://compilr.dev)
+- [npm Package](https://www.npmjs.com/package/@compilr-dev/agents-coding)
+- [Report Issues](https://github.com/compilr-dev/agents-coding/issues)
 
 ## License
 
