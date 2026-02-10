@@ -1,0 +1,86 @@
+name: Bug Report
+description: Report a bug in @compilr-dev/agents-coding
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please fill out the sections below so we can reproduce and fix the issue.
+
+  - type: input
+    id: version
+    attributes:
+      label: Package Version
+      description: "Check your package.json or run `npm ls @compilr-dev/agents-coding`"
+      placeholder: "1.0.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      description: Which package is affected?
+      options:
+        - "@compilr-dev/agents-coding (umbrella)"
+        - "@compilr-dev/agents-coding-core"
+        - "@compilr-dev/agents-coding-ts"
+        - "@compilr-dev/agents-coding-python"
+        - "@compilr-dev/agents-coding-go"
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which tool category is affected?
+      options:
+        - Git Tools
+        - Project Detection
+        - Smart Runners (test/build/lint/format)
+        - Code Search
+        - Language Auto-Detection
+        - TypeScript/JavaScript Analysis
+        - Python Analysis
+        - Go Analysis
+        - Skills
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect?
+      placeholder: |
+        What happened:
+        ...
+
+        What I expected:
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal Reproduction
+      description: A code snippet or project structure that reproduces the issue
+      render: typescript
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your system info
+      placeholder: |
+        - OS: macOS 15 / Ubuntu 24.04 / Windows 11
+        - Node.js: 22.x
+        - Target language: TypeScript / Python / Go
+      render: markdown
