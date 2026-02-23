@@ -15,6 +15,9 @@
 [![npm version](https://img.shields.io/npm/v/@compilr-dev/agents-coding.svg)](https://www.npmjs.com/package/@compilr-dev/agents-coding)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> [!WARNING]
+> This package is in beta. APIs may change between minor versions.
+
 Extension package for [@compilr-dev/agents](https://www.npmjs.com/package/@compilr-dev/agents) that provides coding-specific tools for git operations, project detection, smart runners, code search, and language-specific AST analysis.
 
 ## Overview
@@ -172,7 +175,7 @@ const agent = new Agent({
 
 ## Requirements
 
-- **Node.js** 18 or higher
+- **Node.js** 20 or higher
 - **@compilr-dev/agents** peer dependency
 
 ## Related Packages
