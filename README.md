@@ -13,7 +13,7 @@
 > Coding-specific tools and language analysis for AI assistants
 
 [![npm version](https://img.shields.io/npm/v/@compilr-dev/agents-coding.svg)](https://www.npmjs.com/package/@compilr-dev/agents-coding)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: FSL-1.1-MIT](https://img.shields.io/badge/License-FSL--1.1--MIT-blue.svg)](https://fsl.software/)
 
 > [!WARNING]
 > This package is in beta. APIs may change between minor versions.
@@ -191,7 +191,7 @@ const agent = new Agent({
 
 ## License
 
-MIT - See [LICENSE](LICENSE) for details.
+[FSL-1.1-MIT](https://fsl.software/) - See [LICENSE](LICENSE) for details. Converts to MIT after 2 years per version.
 
 ---
 
