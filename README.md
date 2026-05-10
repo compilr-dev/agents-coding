@@ -15,24 +15,21 @@
 [![npm version](https://img.shields.io/npm/v/@compilr-dev/agents-coding.svg)](https://www.npmjs.com/package/@compilr-dev/agents-coding)
 [![License: FSL-1.1-MIT](https://img.shields.io/badge/License-FSL--1.1--MIT-blue.svg)](https://fsl.software/)
 
-> [!WARNING]
-> This package is in beta. APIs may change between minor versions.
-
-Extension package for [@compilr-dev/agents](https://www.npmjs.com/package/@compilr-dev/agents) that provides coding-specific tools for git operations, project detection, smart runners, code search, and language-specific AST analysis.
+Multi-language coding tools for AI agents -- umbrella package with auto-detection.
 
 ## Overview
 
-This is the **umbrella package** that bundles the entire coding tools ecosystem:
+This is the **umbrella package** that provides a unified interface for all coding tools across multiple programming languages. It automatically detects the language from file extensions and routes to the appropriate parser.
+
+## Package Structure
 
 | Package | Description |
 |---------|-------------|
-| **@compilr-dev/agents-coding** | This package -- batteries-included with auto-detection |
-| [@compilr-dev/agents-coding-core](https://www.npmjs.com/package/@compilr-dev/agents-coding-core) | Git tools, project detection, smart runners, code search |
-| [@compilr-dev/agents-coding-ts](https://www.npmjs.com/package/@compilr-dev/agents-coding-ts) | TypeScript/JavaScript AST analysis |
-| [@compilr-dev/agents-coding-python](https://www.npmjs.com/package/@compilr-dev/agents-coding-python) | Python AST analysis (Tree-sitter) |
-| [@compilr-dev/agents-coding-go](https://www.npmjs.com/package/@compilr-dev/agents-coding-go) | Go AST analysis (Tree-sitter) |
-
-Install just this package for everything, or install individual packages for a lighter footprint.
+| **@compilr-dev/agents-coding** | This umbrella (re-exports everything + auto-detection) |
+| [@compilr-dev/agents-coding-core](https://www.npmjs.com/package/@compilr-dev/agents-coding-core) | Git tools, project detection, smart runners, code search (30 tools, 14 skills) |
+| [@compilr-dev/agents-coding-ts](https://www.npmjs.com/package/@compilr-dev/agents-coding-ts) | TypeScript/JavaScript AST analysis (15 tools) |
+| [@compilr-dev/agents-coding-python](https://www.npmjs.com/package/@compilr-dev/agents-coding-python) | Python AST analysis via Tree-sitter |
+| [@compilr-dev/agents-coding-go](https://www.npmjs.com/package/@compilr-dev/agents-coding-go) | Go AST analysis via Tree-sitter |
 
 ## Installation
 
@@ -42,78 +39,87 @@ npm install @compilr-dev/agents-coding @compilr-dev/agents
 
 # Or individual packages for lighter installs
 npm install @compilr-dev/agents-coding-core @compilr-dev/agents
-npm install @compilr-dev/agents-coding-ts    # TypeScript analysis
+npm install @compilr-dev/agents-coding-ts    # TypeScript analysis only
 ```
 
-## Features
+This single install gives you:
+- **Core Tools** - Git operations, project detection, smart runners, code search
+- **TypeScript/JavaScript** - AST-based analysis via TypeScript compiler
+- **Python** - AST-based analysis via Tree-sitter
+- **Go** - AST-based analysis via Tree-sitter
 
-- **Git Tools** - Status, diff, log, commit, branch, stash operations
-- **Project Detection** - Detect project type, find root, analyze structure
-- **Smart Runners** - Run tests, lint, build, format with auto-detection
-- **Code Search** - Find definitions, references, and TODOs
-- **Language Analysis** - AST-based analysis for TypeScript, Python, Go
-- **14 Skills** - Reusable prompts for coding workflows
-- **Auto-detection** - Automatically selects the right language analyzer
+## Quick Start
+
+```typescript
+import { Agent } from '@compilr-dev/agents';
+import {
+  // Core tools (language-agnostic)
+  gitStatusTool,
+  gitDiffTool,
+  detectProjectTool,
+  runTestsTool,
+
+  // Unified tools with auto-detection
+  getFileStructureTool,
+} from '@compilr-dev/agents-coding';
+
+const agent = new Agent({
+  provider: yourProvider,
+  tools: [gitStatusTool, detectProjectTool, getFileStructureTool],
+});
+```
 
 ## Language Auto-Detection
 
-The umbrella package includes a dispatcher that automatically selects the right analyzer:
+The umbrella provides unified tools that automatically detect the language:
 
 ```typescript
-import { createLanguageTools } from '@compilr-dev/agents-coding';
+import { detectLanguage, getFileStructureTool } from '@compilr-dev/agents-coding';
 
-// Auto-detects project language and returns appropriate tools
-const tools = await createLanguageTools('/path/to/project');
+// Detect language from file path
+detectLanguage('src/app.ts');     // 'typescript'
+detectLanguage('main.py');         // 'python'
+detectLanguage('cmd/server.go');   // 'go'
+
+// Unified tool routes to correct parser
+const result = await getFileStructureTool.execute({ path: 'src/app.ts' });
+// Uses TypeScript parser automatically
 ```
 
-## Git Tools
+## Direct Language Access
 
-```typescript
-import {
-  gitStatusTool,
-  gitDiffTool,
-  gitLogTool,
-  gitCommitTool,
-  gitBranchTool,
-  gitStashTool
-} from '@compilr-dev/agents-coding';
-```
-
-| Tool | Description |
-|------|-------------|
-| `gitStatusTool` | Get parsed git status |
-| `gitDiffTool` | View diffs with file filtering |
-| `gitLogTool` | Parsed commit history |
-| `gitCommitTool` | Safe commit workflow |
-| `gitBranchTool` | Create, switch, list, delete branches |
-| `gitStashTool` | Push, pop, list, apply, drop stashes |
-
-## Project Detection
+Access language-specific tools directly when needed:
 
 ```typescript
 import {
-  detectProjectTool,
-  findProjectRootTool
+  ts,      // TypeScript tools
+  python,  // Python tools
+  go,      // Go tools
 } from '@compilr-dev/agents-coding';
+
+// Use language-specific tools directly
+const tsResult = await ts.getFileStructureTool.execute({ path: 'app.ts' });
+const pyResult = await python.getFileStructureTool.execute({ path: 'main.py' });
+const goResult = await go.getFileStructureTool.execute({ path: 'main.go' });
 ```
 
-| Tool | Description |
-|------|-------------|
-| `detectProjectTool` | Full project analysis (type, framework, structure) |
-| `findProjectRootTool` | Walk up directories to find project root |
+## Core Tools
 
-## Smart Runners
+All language-agnostic tools from `@compilr-dev/agents-coding-core`:
 
-Auto-detect and run the appropriate tool for your project:
+### Git Tools
+- `gitStatusTool` - Parsed git status
+- `gitDiffTool` - Structured diffs
+- `gitLogTool` - Commit history
+- `gitCommitTool` - Safe commit workflow
+- `gitBranchTool` - Branch management
+- `gitStashTool` - Stash operations
 
-```typescript
-import {
-  runTestsTool,
-  runLintTool,
-  runBuildTool,
-  runFormatTool
-} from '@compilr-dev/agents-coding';
-```
+### Project Detection
+- `detectProjectTool` - Detect project type, framework, tooling
+- `findProjectRootTool` - Find project root directory
+
+### Smart Runners
 
 | Tool | Supported |
 |------|-----------|
@@ -124,58 +130,28 @@ import {
 
 All runners support `dryRun` mode to detect without executing.
 
-## Code Search
-
-```typescript
-import {
-  findDefinitionTool,
-  findReferencesTool,
-  findTodosTool
-} from '@compilr-dev/agents-coding';
-```
-
-| Tool | Description |
-|------|-------------|
-| `findDefinitionTool` | Find symbol definitions (multi-language) |
-| `findReferencesTool` | Find symbol usage across codebase |
-| `findTodosTool` | Extract TODO/FIXME comments |
+### Code Search
+- `findDefinitionTool` - Find symbol definitions
+- `findReferencesTool` - Find symbol usages
+- `findTodosTool` - Find TODO/FIXME comments
 
 ## Skills
 
-Reusable prompts for coding workflows:
-
 ```typescript
-import {
-  gitWorkflowSkill,
-  projectSetupSkill,
-  testDrivenSkill,
-  codeReviewSkill,
-  debuggingSkill,
-  refactoringSkill
-} from '@compilr-dev/agents-coding';
-```
+import { codingSkills } from '@compilr-dev/agents-coding';
 
-## Usage with Agent
-
-```typescript
-import { Agent, ClaudeProvider } from '@compilr-dev/agents';
-import {
-  gitStatusTool,
-  gitDiffTool,
-  detectProjectTool,
-  runTestsTool
-} from '@compilr-dev/agents-coding';
-
-const agent = new Agent({
-  provider: new ClaudeProvider({ apiKey: process.env.ANTHROPIC_API_KEY }),
-  tools: [gitStatusTool, gitDiffTool, detectProjectTool, runTestsTool],
-  systemPrompt: 'You are a coding assistant.',
-});
+// Available skills:
+// - git-workflow
+// - test-driven
+// - code-navigation
+// - pr-workflow
+// - project-onboarding
+// - code-optimization
 ```
 
 ## Requirements
 
-- **Node.js** 20 or higher
+- **Node.js** 18 or higher
 - **@compilr-dev/agents** peer dependency
 
 ## Related Packages
