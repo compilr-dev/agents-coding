@@ -15,7 +15,7 @@ type SupportedLanguage =
   | "unknown";
 ```
 
-Defined in: [dispatcher.ts:11](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/dispatcher.ts#L11)
+Defined in: [dispatcher.ts:11](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/dispatcher.ts#L11)
 
 Supported languages
 
@@ -31,7 +31,7 @@ const getComplexityTool: Tool<{
 }>;
 ```
 
-Defined in: [index.ts:153](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L153)
+Defined in: [index.ts:153](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L153)
 
 Unified getComplexity tool with auto-detection
 
@@ -47,7 +47,7 @@ const getFileStructureTool: Tool<{
 }>;
 ```
 
-Defined in: [index.ts:96](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L96)
+Defined in: [index.ts:96](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L96)
 
 Unified getFileStructure tool with auto-detection
 
@@ -64,7 +64,7 @@ const readClassTool: Tool<{
 }>;
 ```
 
-Defined in: [index.ts:275](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L275)
+Defined in: [index.ts:275](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L275)
 
 Unified read_class tool with auto-detection
 
@@ -81,7 +81,7 @@ const readFunctionTool: Tool<{
 }>;
 ```
 
-Defined in: [index.ts:212](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L212)
+Defined in: [index.ts:212](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L212)
 
 Unified read_function tool with auto-detection
 
@@ -97,7 +97,7 @@ const readTypeTool: Tool<{
 }>;
 ```
 
-Defined in: [index.ts:336](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L336)
+Defined in: [index.ts:336](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L336)
 
 Unified read_type tool with auto-detection
 
@@ -131,7 +131,7 @@ const unifiedTools: (
 }>)[];
 ```
 
-Defined in: [index.ts:369](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L369)
+Defined in: [index.ts:369](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L369)
 
 All unified tools with auto-detection
 
@@ -143,7 +143,7 @@ All unified tools with auto-detection
 function detectLanguage(filePath): SupportedLanguage;
 ```
 
-Defined in: [dispatcher.ts:54](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/dispatcher.ts#L54)
+Defined in: [dispatcher.ts:54](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/dispatcher.ts#L54)
 
 Detect language from file path
 
@@ -165,7 +165,7 @@ Detect language from file path
 function getComplexity(path, options?): Promise<ToolExecutionResult>;
 ```
 
-Defined in: [index.ts:129](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L129)
+Defined in: [index.ts:129](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L129)
 
 Get complexity metrics for a file
 
@@ -190,7 +190,7 @@ Get complexity metrics for a file
 function getFileStructure(path, options?): Promise<ToolExecutionResult>;
 ```
 
-Defined in: [index.ts:72](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L72)
+Defined in: [index.ts:72](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L72)
 
 Get the appropriate getFileStructure tool for a file
 
@@ -215,7 +215,7 @@ Get the appropriate getFileStructure tool for a file
 function getLanguageDisplayName(lang): string;
 ```
 
-Defined in: [dispatcher.ts:69](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/dispatcher.ts#L69)
+Defined in: [dispatcher.ts:69](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/dispatcher.ts#L69)
 
 Get language display name
 
@@ -237,7 +237,7 @@ Get language display name
 function getLanguageExtensions(lang): string[];
 ```
 
-Defined in: [dispatcher.ts:85](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/dispatcher.ts#L85)
+Defined in: [dispatcher.ts:85](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/dispatcher.ts#L85)
 
 Get file extensions for a language
 
@@ -266,7 +266,7 @@ function getToolsForLanguage(lang):
   | null;
 ```
 
-Defined in: [index.ts:380](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L380)
+Defined in: [index.ts:380](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L380)
 
 Get language-specific tools for a given language
 
@@ -294,7 +294,7 @@ Get language-specific tools for a given language
 function isLanguageSupported(lang): boolean;
 ```
 
-Defined in: [dispatcher.ts:62](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/dispatcher.ts#L62)
+Defined in: [dispatcher.ts:62](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/dispatcher.ts#L62)
 
 Check if a language is supported for AST analysis
 
@@ -319,7 +319,7 @@ function readClass(
 options?): Promise<ToolExecutionResult>;
 ```
 
-Defined in: [index.ts:250](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L250)
+Defined in: [index.ts:250](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L250)
 
 Read a class by name
 
@@ -348,7 +348,7 @@ function readFunction(
 options?): Promise<ToolExecutionResult>;
 ```
 
-Defined in: [index.ts:190](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L190)
+Defined in: [index.ts:190](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L190)
 
 Read a function or method by name
 
@@ -377,7 +377,7 @@ function readType(
 options?): Promise<ToolExecutionResult>;
 ```
 
-Defined in: [index.ts:314](https://github.com/scozzola/compilr-dev-agents-coding/blob/2ce373f9f6c08e6e259655f4f0982d5e81f9597b/src/index.ts#L314)
+Defined in: [index.ts:314](https://github.com/scozzola/compilr-dev-agents-coding/blob/b295fdb92a165ce8cd733ade04eb974db378199f/src/index.ts#L314)
 
 Read a type, interface, or enum by name
 
