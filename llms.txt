@@ -1,0 +1,395 @@
+# @compilr-dev/agents-coding
+
+## Type Aliases
+
+### SupportedLanguage
+
+```ts
+type SupportedLanguage = 
+  | "typescript"
+  | "javascript"
+  | "python"
+  | "go"
+  | "rust"
+  | "java"
+  | "unknown";
+```
+
+Defined in: [dispatcher.ts:11](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/dispatcher.ts#L11)
+
+Supported languages
+
+## Variables
+
+### getComplexityTool
+
+```ts
+const getComplexityTool: Tool<{
+  path: string;
+  recursive?: boolean;
+  threshold?: number;
+}>;
+```
+
+Defined in: [index.ts:153](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L153)
+
+Unified getComplexity tool with auto-detection
+
+***
+
+### getFileStructureTool
+
+```ts
+const getFileStructureTool: Tool<{
+  includePrivate?: boolean;
+  maxDepth?: number;
+  path: string;
+}>;
+```
+
+Defined in: [index.ts:96](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L96)
+
+Unified getFileStructure tool with auto-detection
+
+***
+
+### readClassTool
+
+```ts
+const readClassTool: Tool<{
+  include?: "full" | "signature" | "methods-only" | "properties-only";
+  includeJsDoc?: boolean;
+  name: string;
+  path: string;
+}>;
+```
+
+Defined in: [index.ts:275](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L275)
+
+Unified read_class tool with auto-detection
+
+***
+
+### readFunctionTool
+
+```ts
+const readFunctionTool: Tool<{
+  className?: string;
+  includeJsDoc?: boolean;
+  name: string;
+  path: string;
+}>;
+```
+
+Defined in: [index.ts:212](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L212)
+
+Unified read_function tool with auto-detection
+
+***
+
+### readTypeTool
+
+```ts
+const readTypeTool: Tool<{
+  includeJsDoc?: boolean;
+  name: string;
+  path: string;
+}>;
+```
+
+Defined in: [index.ts:336](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L336)
+
+Unified read_type tool with auto-detection
+
+***
+
+### unifiedTools
+
+```ts
+const unifiedTools: (
+  | Tool<{
+  includePrivate?: boolean;
+  maxDepth?: number;
+  path: string;
+}>
+  | Tool<{
+  path: string;
+  recursive?: boolean;
+  threshold?: number;
+}>
+  | Tool<{
+  className?: string;
+  includeJsDoc?: boolean;
+  name: string;
+  path: string;
+}>
+  | Tool<{
+  include?: "full" | "signature" | "methods-only" | "properties-only";
+  includeJsDoc?: boolean;
+  name: string;
+  path: string;
+}>)[];
+```
+
+Defined in: [index.ts:369](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L369)
+
+All unified tools with auto-detection
+
+## Functions
+
+### detectLanguage()
+
+```ts
+function detectLanguage(filePath): SupportedLanguage;
+```
+
+Defined in: [dispatcher.ts:54](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/dispatcher.ts#L54)
+
+Detect language from file path
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `filePath` | `string` |
+
+#### Returns
+
+[`SupportedLanguage`](#supportedlanguage)
+
+***
+
+### getComplexity()
+
+```ts
+function getComplexity(path, options?): Promise<ToolExecutionResult>;
+```
+
+Defined in: [index.ts:129](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L129)
+
+Get complexity metrics for a file
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `options?` | \{ `recursive?`: `boolean`; `threshold?`: `number`; \} |
+| `options.recursive?` | `boolean` |
+| `options.threshold?` | `number` |
+
+#### Returns
+
+`Promise`\<`ToolExecutionResult`\>
+
+***
+
+### getFileStructure()
+
+```ts
+function getFileStructure(path, options?): Promise<ToolExecutionResult>;
+```
+
+Defined in: [index.ts:72](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L72)
+
+Get the appropriate getFileStructure tool for a file
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `options?` | \{ `includePrivate?`: `boolean`; `maxDepth?`: `number`; \} |
+| `options.includePrivate?` | `boolean` |
+| `options.maxDepth?` | `number` |
+
+#### Returns
+
+`Promise`\<`ToolExecutionResult`\>
+
+***
+
+### getLanguageDisplayName()
+
+```ts
+function getLanguageDisplayName(lang): string;
+```
+
+Defined in: [dispatcher.ts:69](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/dispatcher.ts#L69)
+
+Get language display name
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `lang` | [`SupportedLanguage`](#supportedlanguage) |
+
+#### Returns
+
+`string`
+
+***
+
+### getLanguageExtensions()
+
+```ts
+function getLanguageExtensions(lang): string[];
+```
+
+Defined in: [dispatcher.ts:85](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/dispatcher.ts#L85)
+
+Get file extensions for a language
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `lang` | [`SupportedLanguage`](#supportedlanguage) |
+
+#### Returns
+
+`string`[]
+
+***
+
+### getToolsForLanguage()
+
+```ts
+function getToolsForLanguage(lang): 
+  | {
+}
+  | {
+}
+  | {
+}
+  | null;
+```
+
+Defined in: [index.ts:380](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L380)
+
+Get language-specific tools for a given language
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `lang` | [`SupportedLanguage`](#supportedlanguage) |
+
+#### Returns
+
+  \| \{
+\}
+  \| \{
+\}
+  \| \{
+\}
+  \| `null`
+
+***
+
+### isLanguageSupported()
+
+```ts
+function isLanguageSupported(lang): boolean;
+```
+
+Defined in: [dispatcher.ts:62](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/dispatcher.ts#L62)
+
+Check if a language is supported for AST analysis
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `lang` | [`SupportedLanguage`](#supportedlanguage) |
+
+#### Returns
+
+`boolean`
+
+***
+
+### readClass()
+
+```ts
+function readClass(
+   path, 
+   name, 
+options?): Promise<ToolExecutionResult>;
+```
+
+Defined in: [index.ts:250](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L250)
+
+Read a class by name
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `name` | `string` |
+| `options?` | \{ `include?`: `"full"` \| `"signature"` \| `"methods-only"` \| `"properties-only"`; `includeJsDoc?`: `boolean`; \} |
+| `options.include?` | `"full"` \| `"signature"` \| `"methods-only"` \| `"properties-only"` |
+| `options.includeJsDoc?` | `boolean` |
+
+#### Returns
+
+`Promise`\<`ToolExecutionResult`\>
+
+***
+
+### readFunction()
+
+```ts
+function readFunction(
+   path, 
+   name, 
+options?): Promise<ToolExecutionResult>;
+```
+
+Defined in: [index.ts:190](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L190)
+
+Read a function or method by name
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `name` | `string` |
+| `options?` | \{ `className?`: `string`; `includeJsDoc?`: `boolean`; \} |
+| `options.className?` | `string` |
+| `options.includeJsDoc?` | `boolean` |
+
+#### Returns
+
+`Promise`\<`ToolExecutionResult`\>
+
+***
+
+### readType()
+
+```ts
+function readType(
+   path, 
+   name, 
+options?): Promise<ToolExecutionResult>;
+```
+
+Defined in: [index.ts:314](https://github.com/scozzola/compilr-dev-agents-coding/blob/d00f1e63c56f995179aabdcf0d852392da63d06e/src/index.ts#L314)
+
+Read a type, interface, or enum by name
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `name` | `string` |
+| `options?` | \{ `includeJsDoc?`: `boolean`; \} |
+| `options.includeJsDoc?` | `boolean` |
+
+#### Returns
+
+`Promise`\<`ToolExecutionResult`\>
