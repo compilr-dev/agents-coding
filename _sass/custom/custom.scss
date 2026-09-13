@@ -1,0 +1,35 @@
+
+// Hide default theme footer
+.site-footer { display: none !important; }
+
+// Site title — prevent wrapping
+.site-title {
+  font-size: 1.1rem !important;
+  white-space: nowrap;
+  overflow: visible;
+  color: #FF5722 !important;
+}
+
+// Wider sidebar
+@media (min-width: 50rem) {
+  .side-bar { width: 16rem !important; min-width: 16rem !important; }
+  .main { margin-left: 16rem !important; }
+}
+
+// Compact headings
+.main-content h1 { font-size: 1.6rem; margin-top: 0; }
+.main-content h2 { font-size: 1.25rem; border-bottom: 1px solid $border-color; padding-bottom: 0.3rem; margin-top: 1.5rem; }
+.main-content h3 { font-size: 1.05rem; margin-top: 1.2rem; }
+
+// Tighter tables
+.main-content table { font-size: 0.85rem; }
+.main-content table td,
+.main-content table th { padding: 0.35rem 0.6rem; }
+
+// Sidebar
+.site-nav { font-size: 0.82rem; }
+.nav-list .nav-list-item { padding: 0; }
+
+// Code blocks
+.main-content code { font-size: 0.82rem; }
+

@@ -1,0 +1,9 @@
+remote_theme: just-the-docs/just-the-docs
+title: "agents-coding"
+description: "API Reference"
+search_enabled: true
+nav_enabled: true
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Back to top"
+color_scheme: compilr-dark
